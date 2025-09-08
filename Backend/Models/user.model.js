@@ -1,32 +1,26 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  fullname: {
-    firstname: {
-      type: String,
-      required: true,
-      minlength: [3, "First name must be at least 3 character long"],
-    },
-    lastname: {
-      type: String,
-      minlength: [3, "First name must be at least 3 character long"],
-    },
+  firstname: {
+    type: String,
+    required: true,
   },
-
+  lastname: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,
-    unquie: true,
-    minlength: [5, "Email atleast 5 character long"],
+    unique: true,
   },
   password: {
     type: String,
     required: true,
-    minlength: [8, "password atleast 8 character long"],
+
     select: false,
   },
 
-  sockedId: {
+  socketId: {
     type: String,
   },
 });

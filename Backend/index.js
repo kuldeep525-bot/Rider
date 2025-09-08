@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import UserRoute from "./routes/user.routes.js";
+import bcyrpt from "bcrypt";
 
 const port = 4000;
 const app = express();
@@ -20,9 +21,10 @@ mongoose
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Define routes
-app.use("/api/v1/user", UserRoute);
+app.use("/users", UserRoute);
 
 app.get("/", (req, res) => {
   res.send("started to ride webapplication");
