@@ -1,8 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import UserRoute from "./routes/user.routes.js";
-import bcyrpt from "bcrypt";
-
+import cookieParser from "cookie-parser";
 const port = 4000;
 const app = express();
 
@@ -22,6 +21,8 @@ mongoose
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Use cookie-parser middleware
+app.use(cookieParser());
 
 // Define routes
 app.use("/users", UserRoute);
